@@ -34,13 +34,13 @@ class MovieThumbnail extends StatelessWidget {
             Positioned(
                 bottom: 15,
                 left: 5,
-                child: Text(movieName,style: const TextStyle(fontSize: 20),)),
+                child: Text(movieName,style: const TextStyle(fontSize: 20,fontFamily: "Poppins"),)),
             Positioned(
                 bottom: 5,
                 left: 5,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 12),),
+                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 12,fontFamily: "Poppins"),),
                 ))
           ],
         ),

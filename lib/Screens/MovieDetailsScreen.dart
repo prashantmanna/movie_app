@@ -43,7 +43,7 @@ class MovieDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MovieAppBar(title: Text("Back"), showBackArrow: true),
+        const MovieAppBar(title: Text("Back",style: TextStyle(fontFamily: "Poppins"),), showBackArrow: true),
         Container(
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
@@ -70,6 +70,7 @@ class MovieDescription extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Poppins"
                 ),
               ),
               const SizedBox(width: 10),
@@ -80,6 +81,7 @@ class MovieDescription extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
+                      fontFamily: "Poppins"
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -95,19 +97,21 @@ class MovieDescription extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            fontFamily: "Poppins"
           ),
         ),
         const SizedBox(height: 5),
         ReadMoreText(
           description,
           trimLines: 5,
+          style: TextStyle(fontFamily: "Poppins"),
           trimMode: TrimMode.Line,
           trimCollapsedText: " ..Show More",
           trimExpandedText: "  ..Less",
           moreStyle:
-          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600,color: Colors.blue),
+          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600,color: Colors.blue,fontFamily: "Poppins"),
           lessStyle:
-          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600,color: Colors.blue),
+          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600,color: Colors.blue,fontFamily: "Poppins"),
         ),
         const SizedBox(height: 10),
         const Text(
@@ -115,12 +119,14 @@ class MovieDescription extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            fontFamily: "Poppins"
           ),
         ),
         const SizedBox(height: 5),
         ReadMoreText(
           description,
           trimLines: 2,
+          style: TextStyle(fontFamily: "Poppins"),
           trimMode: TrimMode.Line,
           trimCollapsedText: " ..Show More",
           trimExpandedText: "  ..Less",
@@ -135,12 +141,14 @@ class MovieDescription extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            fontFamily: "Poppins"
           ),
         ),
         const SizedBox(height: 5),
         Text(
           date,
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16,fontFamily: "Poppins"),
+
         ),
         const SizedBox(height: 20),
       ],

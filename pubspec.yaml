@@ -28,3 +28,9 @@ flutter:
   assets:
     - assets/logo_movie.png
     - assets/movie_images/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
