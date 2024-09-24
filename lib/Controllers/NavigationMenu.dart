@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:movie_app/Screens/MovieDetailsScreen.dart';
+import 'package:movie_app/Screens/AllMovie.dart';
 import 'package:movie_app/Screens/Search.dart';
 
 import '../Screens/HomeScreen.dart';
@@ -43,7 +43,7 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    const MovieDetailsScreen(),
+    const Allmovie(),
     const Search()
   ];
 }
