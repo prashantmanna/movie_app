@@ -5,7 +5,7 @@ import 'package:movie_app/Widgets/GridLayout.dart';
 import 'package:http/http.dart' as http;
 import '../Repository/MoviesModel.dart';
 import '../Widgets/MovieThumbnails.dart';
-
+import 'package:html/parser.dart' show parse;
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -41,6 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  String trimCode(String html) {
+    var document = parse(html);
+    return document.body?.text ?? '';
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -64,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             MovieThumbnail(
                               movieName: movies[index].show.name,
                               // Replace with actual movie name
-                              movieDesc: movies[index].show.summary,
+                              movieDesc: trimCode(movies[index].show.summary),
                               // Replace with actual description
                               icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
                             ),

@@ -29,7 +29,6 @@ class NavigationMenu extends StatelessWidget {
 
             destinations: const [
               NavigationDestination(icon: Icon(Iconsax.home), label: "Home"),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: "Movie"),
               NavigationDestination(icon: Icon(Icons.search), label: "Search")
             ],
           )
@@ -43,7 +42,6 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    const MovieDetailsScreen(),
     const Search()
   ];
 }
