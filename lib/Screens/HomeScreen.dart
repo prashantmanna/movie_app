@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Scaffold(
             body: SingleChildScrollView(
-              child: SGridLayout(itemCount: 10, itemBuilder: (_,index)=>MovieThumbnail(movieName: "Titanic", movieDesc: "This movie is very good This movie is very good", icon: Images_String.titanic))
+              child: SGridLayout(itemCount: 10, itemBuilder: (_,index)=>const MovieThumbnail(movieName: "Titanic", movieDesc: "This movie is very good This movie is very good", icon: Images_String.titanic))
             )
         ),
       ),

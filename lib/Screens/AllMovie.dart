@@ -10,10 +10,10 @@ class Allmovie extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
             child: Container(
-              child: SGridLayout(itemCount: 10, itemBuilder: (_,index) => MovieThumbnail(movieName: "RRR", movieDesc: "This movie is very good this movie is very good", icon: Images_String.rrr)),
+              child: SGridLayout(itemCount: 10, itemBuilder: (_,index) => const MovieThumbnail(movieName: "RRR", movieDesc: "This movie is very good this movie is very good", icon: Images_String.rrr)),
             ),
           ),
         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:movie_app/Constants/Images_String.dart';
-import 'package:movie_app/Screens/AllMovie.dart';
 import 'package:movie_app/Widgets/GridLayout.dart';
 import 'package:movie_app/Widgets/MovieThumbnails.dart';
 class Search extends StatelessWidget {
@@ -16,10 +15,10 @@ class Search extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SearchBar(hintText: "Enter movie name",leading: Icon(Iconsax.search_normal),),
-                SizedBox(height: 15,),
+                const SearchBar(hintText: "Enter movie name",leading: Icon(Iconsax.search_normal),),
+                const SizedBox(height: 15,),
                 Container(
-                  child: SGridLayout(itemCount: 10, itemBuilder: (_,index)=>(MovieThumbnail(movieName: "Titanic",movieDesc: "This movie is very very good",icon: Images_String.titanic,))),
+                  child: SGridLayout(itemCount: 10, itemBuilder: (_,index)=>(const MovieThumbnail(movieName: "Titanic",movieDesc: "This movie is very very good",icon: Images_String.titanic,))),
                 ),
               ],
             ),

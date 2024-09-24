@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:movie_app/Screens/AllMovie.dart';
 
 import '../Screens/MovieDetailsScreen.dart';
 class MovieThumbnail extends StatelessWidget {
@@ -18,7 +16,7 @@ class MovieThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> Get.to(MovieDetailsScreen()),
+      onTap: ()=> Get.to(const MovieDetailsScreen()),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -36,13 +34,13 @@ class MovieThumbnail extends StatelessWidget {
             Positioned(
                 bottom: 15,
                 left: 5,
-                child: Text(movieName,style: TextStyle(fontSize: 20),)),
+                child: Text(movieName,style: const TextStyle(fontSize: 20),)),
             Positioned(
                 bottom: 5,
                 left: 5,
                 child: Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 12),),
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 12),),
                 ))
           ],
         ),
