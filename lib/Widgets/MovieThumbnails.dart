@@ -29,18 +29,19 @@ class MovieThumbnail extends StatelessWidget {
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image(image: AssetImage(icon),height: 250,width: 200,fit: BoxFit.cover,)
+                child: Image.network(icon)
             ),
+            const SizedBox(height: 10,),
             Positioned(
                 bottom: 15,
                 left: 5,
-                child: Text(movieName,style: const TextStyle(fontSize: 20,fontFamily: "Poppins"),)),
+                child: Text(movieName,style: const TextStyle(fontSize: 20,fontFamily: "Poppins",fontWeight: FontWeight.w900),)),
             Positioned(
                 bottom: 5,
                 left: 5,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 12,fontFamily: "Poppins"),),
+                  child: Text(movieDesc,overflow: TextOverflow.ellipsis,style: const TextStyle(fontSize: 12,fontFamily: "Poppins",fontWeight: FontWeight.w600),),
                 ))
           ],
         ),

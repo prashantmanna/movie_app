@@ -4,7 +4,7 @@ class SGridLayout extends StatelessWidget {
   const SGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent = 300,
+    this.mainAxisExtent = 320,
     required this.itemBuilder,
   });
 

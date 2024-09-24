@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Constants/Images_String.dart';
+import 'package:movie_app/Repository/MoviesModel.dart';
 import 'package:movie_app/Widgets/GridLayout.dart';
 import 'package:movie_app/Widgets/MovieThumbnails.dart';
 class Allmovie extends StatelessWidget {
@@ -7,6 +8,7 @@ class Allmovie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<MoviesModel> allmovies = [];
     return Scaffold(
       body: SafeArea(
         child: Padding(

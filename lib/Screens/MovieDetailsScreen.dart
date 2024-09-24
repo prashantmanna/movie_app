@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:movie_app/Constants/Images_String.dart';
-import 'package:movie_app/Widgets/MovieAppBar.dart';
 import 'package:readmore/readmore.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
@@ -9,16 +8,23 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: MovieDescription(
-            title: "Titanic",
-            description: "This is my movie This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie",
-            actors: "This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie",
-            date: "24/09/2024",
-            rating: 9.0,
+    return const SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Column(
+              children: [
+                Text("Movie Details",style: TextStyle(fontSize: 20,fontFamily: "Poppins",fontWeight: FontWeight.bold),),
+                MovieDescription(
+                  title: "Titanic",
+                  description: "This is my movie This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie",
+                  actors: "This is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movieThis is my movie",
+                  date: "24/09/2024",
+                  rating: 9.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -43,7 +49,6 @@ class MovieDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MovieAppBar(title: Text("Back",style: TextStyle(fontFamily: "Poppins"),), showBackArrow: true),
         Container(
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
@@ -60,6 +65,7 @@ class MovieDescription extends StatelessWidget {
             ),
           ),
         ),
+
         const SizedBox(height: 10),
         Container(
           child: Row(
@@ -104,7 +110,7 @@ class MovieDescription extends StatelessWidget {
         ReadMoreText(
           description,
           trimLines: 5,
-          style: TextStyle(fontFamily: "Poppins"),
+          style: const TextStyle(fontFamily: "Poppins"),
           trimMode: TrimMode.Line,
           trimCollapsedText: " ..Show More",
           trimExpandedText: "  ..Less",
@@ -126,7 +132,7 @@ class MovieDescription extends StatelessWidget {
         ReadMoreText(
           description,
           trimLines: 2,
-          style: TextStyle(fontFamily: "Poppins"),
+          style: const TextStyle(fontFamily: "Poppins"),
           trimMode: TrimMode.Line,
           trimCollapsedText: " ..Show More",
           trimExpandedText: "  ..Less",
