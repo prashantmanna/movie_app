@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -35,7 +34,7 @@ class MovieDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MovieAppBar(
+        const MovieAppBar(
           showBackArrow: true,
           title: Text("Go Back",style: TextStyle(fontFamily: "Poppins"),),
         ),
@@ -87,9 +86,9 @@ class MovieDescription extends StatelessWidget {
           ),
         ),
         Row(children: [
-          Text(genre[0],style: TextStyle(fontFamily: "Poppins"),),
-          SizedBox(width: 10,),
-          Text(genre[1],style: TextStyle(fontFamily: "Poppins"),),
+          Text(genre[0],style: const TextStyle(fontFamily: "Poppins"),),
+          const SizedBox(width: 10,),
+          Text(genre[1],style: const TextStyle(fontFamily: "Poppins"),),
         ],),
         const SizedBox(height: 10),
         const Text(
@@ -128,7 +127,7 @@ class MovieDescription extends StatelessWidget {
           style: const TextStyle(fontSize: 16, fontFamily: "Poppins"),
         ),
         const SizedBox(height: 20),
-        Text("Offical Site " + site,style: TextStyle(fontFamily: "Poppins",color: Colors.blue),)
+        Text("Offical Site $site",style: const TextStyle(fontFamily: "Poppins",color: Colors.blue),)
       ],
     );
   }

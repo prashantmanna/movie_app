@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:movie_app/Screens/MovieDetailsScreen.dart';
 import 'package:movie_app/Screens/Search.dart';
 import '../Screens/HomeScreen.dart';
 

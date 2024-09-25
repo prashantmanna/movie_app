@@ -33,7 +33,7 @@ class _SearchState extends State<Search> {
   Future<void> searchData(String searchTerm) async {
     if (searchTerm.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Please enter a search term")),
+        const SnackBar(content: Text("Please enter a search term")),
       );
       return; // Exit if the search term is empty
     }
@@ -58,7 +58,7 @@ class _SearchState extends State<Search> {
     } catch (e) {
       print("Error fetching movies: $e");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to load movies")),
+        const SnackBar(content: Text("Failed to load movies")),
       );
     }
   }
@@ -76,7 +76,7 @@ class _SearchState extends State<Search> {
                 SearchBar(
                   controller: _searchController,
                   hintText: "Enter Movie Name",
-                  leading: Icon(Iconsax.search_normal),
+                  leading: const Icon(Iconsax.search_normal),
                   onSubmitted: (value) {
                     searchData(value); // Trigger search when the user submits the search term
                   },

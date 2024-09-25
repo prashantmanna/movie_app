@@ -19,6 +19,7 @@ dependencies:
   readmore: ^3.0.0
   http: ^1.2.2
 
+  html: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../Screens/MovieDetailsScreen.dart';
 class MovieThumbnail extends StatelessWidget {
   const MovieThumbnail({
     super.key,
