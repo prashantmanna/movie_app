@@ -6,7 +6,6 @@ import '../Screens/HomeScreen.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
