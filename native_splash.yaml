@@ -2,13 +2,14 @@ flutter_native_splash:
   android: true
   ios: true
   web: false
-  image: "assets/movie_images/movie_app.png"
+  image: "assets/movie_images/logo_movie.png"
   color: "#ffffff"
   android_12:
     android: true
     ios: true
     web: false
-    image: "assets/movie_images/movie_app.png"
+    image: "assets/movie_images/logo_movie.png"
     color: "#ffffff"
+
 
 

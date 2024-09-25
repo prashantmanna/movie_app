@@ -27,20 +27,27 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getData() async {
-    final response = await http.get(Uri.parse("https://api.tvmaze.com/search/shows?q=all"));
+    try {
+      final response = await http.get(Uri.parse("https://api.tvmaze.com/search/shows?q=all"));
 
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
 
-      // Clear the movies list before adding new data
-      setState(() {
-        movies.clear();
-        for (Map<String, dynamic> item in data) {
-          movies.add(MoviesModel.fromJson(item));
-        }
-      });
-    } else {
-      throw Exception('Failed to load movies');
+        // Clear the movies list before adding new data
+        setState(() {
+          movies.clear();
+          for (Map<String, dynamic> item in data) {
+            movies.add(MoviesModel.fromJson(item));
+          }
+        });
+      } else {
+        throw Exception('Failed to load movies');
+      }
+    } catch (e) {
+      print("Error fetching movies: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to load movies")),
+      );
     }
   }
 
@@ -68,24 +75,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? SGridLayout(
                   itemCount: movies.length,
                   itemBuilder: (_, index) => GestureDetector(
-                    onTap: () => {
+                    onTap: () {
+                      // Directly navigate since we know the index is valid here
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => MovieDetailsScreen(movie: movies[index]), // Pass movie data
                         ),
-                      )
+                      );
                     },
                     child: MovieThumbnail(
-                      movieName: movies[index].show.name, // Replace with actual movie name
-                      movieDesc: trimCode(movies[index].show.summary), // Replace with actual description
-                      icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
+                      movieName: movies[index].show.name,
+                      movieDesc: trimCode(movies[index].show.summary),
+                      icon: movies[index].show.image?.medium ??
+                          movies[index].show.image?.original ??
+                          "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180",
                     ),
                   ),
                 )
-                    : const Center(
-                  child: CircularProgressIndicator(),
-                ),
+                    : const Center(child: CircularProgressIndicator()),
               ],
             ),
           ),
