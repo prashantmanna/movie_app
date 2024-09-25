@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import '../Repository/MoviesModel.dart';
 import '../Widgets/MovieThumbnails.dart';
 import 'package:html/parser.dart' show parse;
+
+import 'MovieDetailsScreen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -67,12 +69,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       return SGridLayout(
                         itemCount: movies.length,
                         itemBuilder: (_, index) =>
-                            MovieThumbnail(
-                              movieName: movies[index].show.name,
-                              // Replace with actual movie name
-                              movieDesc: trimCode(movies[index].show.summary),
-                              // Replace with actual description
-                              icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
+                            GestureDetector(
+                              onTap: ()=>{
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                              builder: (context) => MovieDetailsScreen(movie: movies[index]), // Pass movie data
+                              ),
+                              )
+                              },
+                              child: MovieThumbnail(
+                                movieName: movies[index].show.name,
+                                // Replace with actual movie name
+                                movieDesc: trimCode(movies[index].show.summary),
+                                // Replace with actual description
+                                icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
+                              ),
                             ),
                       );
                     }else{
