@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/Constants/Images_String.dart';
 import 'package:movie_app/Widgets/GridLayout.dart';
 import 'package:http/http.dart' as http;
 import '../Repository/MoviesModel.dart';
@@ -8,6 +9,7 @@ import '../Widgets/MovieThumbnails.dart';
 import 'package:html/parser.dart' show parse;
 
 import 'MovieDetailsScreen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -24,20 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
     getData();
   }
 
-  Future<List<MoviesModel>> getData() async {
+  Future<void> getData() async {
     final response = await http.get(Uri.parse("https://api.tvmaze.com/search/shows?q=all"));
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
+
       // Clear the movies list before adding new data
-      movies.clear();
-
-      for (Map<String, dynamic> item in data) {
-        movies.add(MoviesModel.fromJson(item));
-      }
-      return movies;
-
-      setState(() {}); // Update the UI after fetching the data
+      setState(() {
+        movies.clear();
+        for (Map<String, dynamic> item in data) {
+          movies.add(MoviesModel.fromJson(item));
+        }
+      });
     } else {
       throw Exception('Failed to load movies');
     }
@@ -48,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return document.body?.text ?? '';
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,40 +58,33 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                const Text(
-                  "Movies App",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: "Poppins"),
+                Center(
+                  child: const Text(
+                    "Movies App",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: "Poppins"),
+                  ),
                 ),
-                FutureBuilder(
-                  future: getData(),
-                  builder: (context,snapshot) {
-                    if (snapshot.hasData) {
-                      return SGridLayout(
-                        itemCount: movies.length,
-                        itemBuilder: (_, index) =>
-                            GestureDetector(
-                              onTap: ()=>{
-                              Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                              builder: (context) => MovieDetailsScreen(movie: movies[index]), // Pass movie data
-                              ),
-                              )
-                              },
-                              child: MovieThumbnail(
-                                movieName: movies[index].show.name,
-                                // Replace with actual movie name
-                                movieDesc: trimCode(movies[index].show.summary),
-                                // Replace with actual description
-                                icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
-                              ),
-                            ),
-                      );
-                    }else{
-                      return const Center(
-                        child: CircularProgressIndicator(),);
-                    }
-                  }
+                movies.isNotEmpty
+                    ? SGridLayout(
+                  itemCount: movies.length,
+                  itemBuilder: (_, index) => GestureDetector(
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailsScreen(movie: movies[index]), // Pass movie data
+                        ),
+                      )
+                    },
+                    child: MovieThumbnail(
+                      movieName: movies[index].show.name, // Replace with actual movie name
+                      movieDesc: trimCode(movies[index].show.summary), // Replace with actual description
+                      icon: movies[index].show.image?.medium ?? movies[index].show.image?.original ?? "https://tse2.mm.bing.net/th?id=OIP.GUk8sz7MvppUwEI-6bXpSwHaHa&pid=Api&P=0&h=180", // Replace with actual image URL
+                    ),
+                  ),
+                )
+                    : const Center(
+                  child: CircularProgressIndicator(),
                 ),
               ],
             ),

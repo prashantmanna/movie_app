@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:movie_app/Widgets/MovieAppBar.dart';
 import 'package:readmore/readmore.dart';
-
+import 'package:html/parser.dart' show parse;
 class MovieDescription extends StatelessWidget {
   const MovieDescription(
       {super.key,
@@ -10,13 +12,23 @@ class MovieDescription extends StatelessWidget {
       required this.description,
       required this.date,
       required this.rating,
-      required this.icon});
+        required this.site,
+      required this.icon, required this.genre});
 
   final String title;
   final String description;
   final String date;
   final String rating;
   final String icon;
+  final List<String> genre;
+  final String site;
+
+  String trimCode(String html) {
+    var document = parse(html);
+    return document.body?.text ?? '';
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +37,7 @@ class MovieDescription extends StatelessWidget {
       children: [
         MovieAppBar(
           showBackArrow: true,
+          title: Text("Go Back",style: TextStyle(fontFamily: "Poppins"),),
         ),
         Container(
           decoration: BoxDecoration(
@@ -37,7 +50,7 @@ class MovieDescription extends StatelessWidget {
             child: Image.network(
               icon,
               fit: BoxFit.cover, // Use BoxFit to control image scaling
-              height: 200, // Adjust the height as necessary
+              height: MediaQuery.of(context).size.height*0.5, // Adjust the height as necessary
               width: double.infinity, // Ensure it takes full width
             ),
           ),
@@ -73,6 +86,11 @@ class MovieDescription extends StatelessWidget {
             ],
           ),
         ),
+        Row(children: [
+          Text(genre[0],style: TextStyle(fontFamily: "Poppins"),),
+          SizedBox(width: 10,),
+          Text(genre[1],style: TextStyle(fontFamily: "Poppins"),),
+        ],),
         const SizedBox(height: 10),
         const Text(
           "Description",
@@ -110,6 +128,7 @@ class MovieDescription extends StatelessWidget {
           style: const TextStyle(fontSize: 16, fontFamily: "Poppins"),
         ),
         const SizedBox(height: 20),
+        Text("Offical Site " + site,style: TextStyle(fontFamily: "Poppins",color: Colors.blue),)
       ],
     );
   }
